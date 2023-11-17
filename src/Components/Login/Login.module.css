@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.LoginPage{
+    background-color: #FD9B4F;
+}
+.container{
+    height: 100vh;
+}
+.box{
+    flex-direction: row;
+    background-color: white;
+    width: 70%;
+    height: 85vh;
+    border-radius: 5vh;
+    box-shadow:2em 2em 3em -2em rgba(95, 95, 95, 0.5);
+}
+.password{
+    gap: 0vw;
+    font-family: FontAwesome;
+    width: 120%;
+}
+.eyes{
+    width: 4vw;
+    font-family: FontAwesome;
+    height: 2.5vw;
+    outline: none;
+    border: none;
+}
+.eyes:hover{
+    opacity: 0.7;
+}
+.pass{
+    width: 80%;
+}
+.content{
+    flex-direction: column;
+    gap: 1vw;
+    margin: 1vw;
+    width: 35vw;
+}
+.content h1{
+    font-size: 4vw;
+    width: 100%;
+}
+.content p{
+    font-weight: lighter;
+}
+.login{
+    flex-direction: column;
+    gap: 1vw;
+}
+.login input{
+    font-family: FontAwesome;
+    width: 120%;
+    height: 2.5vw;
+    padding-left: 1vw;
+    background-color: #F3F2F3;
+    border-radius: .2vw;
+    outline: none;
+    border: none;
+}
+.login input[type="checkbox"] {
+    transform : scale(1.5); 
+}
+.login input[type="checkbox"]:checked {
+    background-color: #FD9B4F;
+}
+.rem{
+    display: flex;
+    align-self: flex-start;
+    gap: 0.5vw;
+}
+.rem h5{
+    padding-top: 0.5vw;
+}
+.btn{
+    width: 120%;
+    height: 2.5vw;
+    background-color: black;
+    color: #F3F2F3;
+}
+.btn:hover{
+    background-color: transparent;
+    color: black;
+}
+.oathbtn{
+    width: 120%;
+    height: 2.5vw;
+    background-color: transparent;
+    font-family: FontAwesome;
+}
+.oathbtn:hover{
+    background-color: #f9b979;
+}
+hr{
+    width: 44%;
+}
+.register{
+    flex-direction: column;
+    gap: 1.8vw;
+}
+.register input{
+    font-family: FontAwesome;
+    width: 120%;
+    height: 2.5vw;
+    padding-left: 1vw;
+    background-color: #F3F2F3;
+    border-radius: .2vw;
+    outline: none;
+    border: none;
+}
+.rem2{
+    width: 100%;
+    display: flex;
+    align-self: flex-start;
+    gap: 0vw;
+    font-size: 1vw;
+    font-weight: 100;
+}
+.register input[type="checkbox"] {
+    transform : scale(0.865843); 
+    height: 1.5vw;
+    margin: 0;
+    width: 40px;
+}
+.btn2{
+    justify-self:left;
+    height: 2.5vw;
+    background-color: transparent;
+    width: 5vw;
+}
+.btn2:hover{
+    background-color: #F3F2F3;
+}
