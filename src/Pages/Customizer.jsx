@@ -8,7 +8,7 @@ import {downloadCanvasToImage,reader} from '../config/helpers';
 import {EditorTabs,FilterTabs,DecalTypes} from '../config/constants'
 import {fadeAnimation,slideAnimation } from '../config/motion'
 import { Aipicker,Colorpicker,CustomButton,Filepicker,Tab } from '../Components';
-
+import { Link } from 'react-router-dom';
 
 const Customizer = () => {
   const snap = useSnapshot(state);
@@ -33,10 +33,28 @@ const Customizer = () => {
           readFile = {readFile}
         />
       case "aipicker":
-        return <Aipicker/>
+        return <Aipicker
+          prompt={prompt}
+          setPrompt={setPrompt}
+          generatingImg={generateImg}
+          handleSubmit={handleSubmit}
+        />
       default:
         return null;
     }
+  }
+
+  const handleSubmit = async(type)=>{
+      if(!prompt) return alert("Please enter the prompt")
+
+      try{
+
+      }catch(e){
+        alert(e)
+      }finally{
+        setGeneratingImg(false);
+        setActiveEditorTab("")
+      }
   }
   const handleDecals = (type,result)=>{
     const decalType = DecalTypes[type];
@@ -74,7 +92,7 @@ const Customizer = () => {
   }
   return (
     <AnimatePresence>
-      {!snap.intro && (
+      {(!snap.intro && !snap.login)&& (
          <>
          <motion.div 
          key="custom"
@@ -82,7 +100,7 @@ const Customizer = () => {
          {...slideAnimation('left')}
          >
           <div className="flex items-center min-h-screen">
-            <div className='editortabs-container tabs'>
+            <div className='editortabs-container tabs glassmorphism'>
               {EditorTabs.map((tab)=>(
                 <Tab 
                   key={tab.name}
@@ -102,8 +120,25 @@ const Customizer = () => {
               type="filled"
               title="Go back"
               handleClick={()=>state.intro = true}
-              customStyles="w-fit px=--4 py-2.5 font-bol text-sm"
+              customStyles="w-fit px-4 py-2.5 font-bold text-sm"
             />
+         </motion.div>
+         <motion.div
+          className='absolute z-10 right-40 bottom-60'
+          {...fadeAnimation}
+         >
+            <motion.div className="absolute z-10 right-30 bottom-10">
+              <h1 className="text-5xl mb-2 font-bold ">599Rs</h1>
+              <p className='text-xs w-52 mb-3'>Prices inclusive of all taxes</p>
+            </motion.div>
+            <Link to="/login" >
+              <CustomButton
+                type="filled"
+                title="Buy Now"
+                handleClick={()=>state.login = true}
+                customStyles="w-fit px-20 py-2.5 text-white font-bold"
+              />
+            </Link>
          </motion.div>
          <motion.div
           className='filtertabs-container'

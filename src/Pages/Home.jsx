@@ -9,12 +9,14 @@ import {
 } from "../config/motion"
 import { CustomButton } from '../Components'
 import state from '../store'
+import CanvasModel from '../canvas/CanvasModel'
 
 const Home = () => {
   const snap = useSnapshot(state);
   return (
+    <>
     <AnimatePresence >
-      {snap.intro &&(
+      {(snap.intro && !snap.login)&&(
         <motion.section className="home" {...slideAnimation('left')}>
           <motion.header {...slideAnimation("down")}>
             <img src="./threejs.png" alt="logo" className="w-8 h-8 object-contain"/>
@@ -43,6 +45,7 @@ const Home = () => {
         </motion.section>
       )}
     </AnimatePresence>
+    </>
     )
 }
 

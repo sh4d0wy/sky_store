@@ -18,7 +18,7 @@ const BackDrop = () => {
       <RandomizedLight
         amount={4}
         radius={6}
-        intensity={3}
+        intensity={5}
         ambient={0.25}
         position={[5,2,-10]}
         // shadowBias={-0.001}
@@ -26,7 +26,7 @@ const BackDrop = () => {
       <RandomizedLight
         amount={4}
         radius={6}
-        intensity={3}
+        intensity={5}
         ambient={0.25}
         position={[-5,2,-9]}
       />

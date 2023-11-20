@@ -21,7 +21,7 @@ const CustomButton = ({title,type,customStyles,handleClick}) => {
   }
   return (
     <button
-    className={`px-2 py-1.5 flex-1 rounded-md ${customStyles}`}
+    className={`py-1.5 flex-1 rounded-md text-white ${customStyles}`}
     style={generateStyle(type)}
     onClick={handleClick}
     >
