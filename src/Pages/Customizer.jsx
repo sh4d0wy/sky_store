@@ -90,6 +90,11 @@ const Customizer = () => {
         setActiveEditorTab("")
       })
   }
+
+  const handleState = ()=>{
+    state.login= true;
+    state.registerpage = true;
+  }
   return (
     <AnimatePresence>
       {(!snap.intro && !snap.login)&& (
@@ -135,7 +140,7 @@ const Customizer = () => {
               <CustomButton
                 type="filled"
                 title="Buy Now"
-                handleClick={()=>state.login = true}
+                handleClick={handleState}
                 customStyles="w-fit px-20 py-2.5 text-white font-bold"
               />
             </Link>
