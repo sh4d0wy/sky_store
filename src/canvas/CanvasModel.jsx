@@ -10,9 +10,10 @@ import state from "../store";
 const CanvasModel = () => {
   const snap = useSnapshot(state);
   console.log(snap.login);
+  console.log(snap.cartPage);
   return (
     <>
-      {!snap.login && (
+      {(!snap.login && !snap.cartPage) && (
         <Canvas
           shadows
           camera={{ position: [0, 0, 0], fov: 25 }}

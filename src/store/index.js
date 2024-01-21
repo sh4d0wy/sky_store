@@ -9,7 +9,8 @@ const state = proxy({
     isLogoTexture: true,
     isFullTexture:false,
     logoDecal:'./threejs.png',
-    fullDecal:'./threejs.png'
+    fullDecal:'./threejs.png',
+    cartPage:false
 })
 
 export default state;

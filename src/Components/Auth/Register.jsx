@@ -14,22 +14,29 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [isClicked, setIsClicked] = useState(false);
   const snap = useSnapshot(state);
-
   const handlePage = () => {
     state.registerpage = false;
   };
+
   const handleRegister = (e) => {
     e.preventDefault();
+    state.login = false;
+    state.cartPage = true;
+  
     axios
-      .post("https://erin-faithful-scarab.cyclic.app/register", {
-        username: userName,
-        password: password,
-        email: email,
-      })
-      .then((response) => {
-        console.log(response.data);
-      });
+    .post("https://erin-faithful-scarab.cyclic.app/register", {
+      username: userName,
+      password: password,
+      email: email,
+    })
+    .then((response) => {
+      console.log(response.data)
+    });
+    
   };
+  console.log(snap.login);
+  console.log(snap.cartPage);
+
   return (
     <>
       <motion.div
@@ -67,7 +74,7 @@ const Register = () => {
               />
               <button
                 className={styles.eyes}
-                onClick={() => setIsClicked(true)}
+                onClick={() => setIsClicked(!isClicked)}
               >
                 {isClicked ? <FaEye/> : <FaEyeSlash />}
               </button>
@@ -76,9 +83,11 @@ const Register = () => {
           <motion.div className={styles.rem2}>
             <input type="checkbox" /> I agree to the Terms and Conditions
           </motion.div>
+          {/* <Link to="/cart"> */}
           <button className={`${styles.btn} ${styles.flex}`} type="submit">
             <FaArrowRight color={"white"} size={"2vw"}/>
           </button>
+          {/* </Link>  */}
         </form>
         <p>
           Already have an account ?

@@ -3,13 +3,11 @@ import styles from "./Login.module.css";
 import "font-awesome/css/font-awesome.min.css";
 import image from "./image.png";
 import { motion, AnimatePresence } from "framer-motion";
-import { fadeAnimation, slideAnimation } from "../../../config/motion";
+import { fadeAnimation, slideAnimation } from "../../config/motion";
 import { useSnapshot } from "valtio";
-import state from "../../../store"
-import axios from "axios";
+import state from "../../store"
 import Login from './Login'
 import Register from "./Register";
-import { FaArrowRight, FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 export default function Auth() {
