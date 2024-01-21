@@ -12,7 +12,8 @@ const state = proxy({
     logoDecal:'./threejs.png',
     fullDecal:'./threejs.png',
     cartPage:false,
-    addressPage:false
+    addressPage:false,
+    paymentsPage:false
 })
 
 export default state;

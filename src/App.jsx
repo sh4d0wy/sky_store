@@ -7,6 +7,7 @@ import Register from "./Components/Auth/Register"
 import Cart from "./Pages/Cart/Cart"
 import { Toaster } from "react-hot-toast"
 import { Address } from "./Pages/Address/Address"
+import Payments  from "./Pages/Payments/Payments"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Auth/>
       <Cart/>
       <Address/>
+      <Payments/>
       <div>
         <Routes>
           <Route path="/home" element={<Home/>}/>
