@@ -4,6 +4,7 @@ import CanvasModel from "./canvas/CanvasModel"
 import Auth from "./Components/Auth/Auth"
 import {Routes,Route} from 'react-router-dom'
 import Register from "./Components/Auth/Register"
+import Cart from "./Pages/Cart/Cart"
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
       <Home/>
       <CanvasModel/>
       <Customizer/>
+      <Auth/>
+      <Cart/>
       <div>
         <Routes>
           <Route path="/home" element={<Home/>}/>

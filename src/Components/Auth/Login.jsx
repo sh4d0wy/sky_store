@@ -14,14 +14,15 @@ const Login = () => {
 }
   const handleLogin = (e) => {
     e.preventDefault();
+    state.cartPage = true;
+    state.login = false;
     axios
       .post("https://erin-faithful-scarab.cyclic.app/login", {
         username: loginUserName,
         password: loginPassword,
       })
       .then((response) => {
-        state.loginpage = !snap.loginpage;
-        state.cartPage = true;
+        console.log(response);
       });
   };
   const snap=useSnapshot(state)
@@ -59,11 +60,11 @@ const Login = () => {
               )}
             </button>
           </motion.div>
-          <Link to="/cart">
+          
           <button className={styles.btn} type="submit">
             Login
           </button>
-          </Link>
+     
           <hr />
           <p>OR</p>
           <hr />

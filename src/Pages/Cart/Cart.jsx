@@ -4,11 +4,14 @@ import state from "../../store";
 
 const Cart = () => {
   const snap = useSnapshot(state);
+  console.log(snap.cartPage);
   return( 
    <>
-        {(!snap.login && snap.cartPage) &&
+        {snap.cartPage &&
         (
-            <h2>Hello</h2>
+          <div style={{background:"Red",width:"100vw",height:"100vh"}}>
+            <h2 style={{color:"white"}}>Hello</h2>
+          </div>
         )}
     </>
   );

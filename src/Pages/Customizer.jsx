@@ -97,7 +97,7 @@ const Customizer = () => {
   }
   return (
     <AnimatePresence>
-      {(!snap.intro && !snap.login && !snap.cartPage)&& (
+      {(!snap.intro && !snap.login && !snap.cartPage )&& (
          <>
          <motion.div 
          key="custom"

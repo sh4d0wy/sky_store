@@ -18,7 +18,7 @@ export default function Auth() {
  
   return (
     <AnimatePresence>
-      {!snap.intro && snap.login && (
+      {(!snap.intro && snap.login && !snap.cartPage) && (
         <motion.div className={styles.LoginPage}>
           <motion.div
             {...fadeAnimation}
@@ -34,7 +34,7 @@ export default function Auth() {
               >
               {snap.registerpage?(
                 <Register/>
-              ):<Login/>}
+              ):(<Login/>)}
 
               </motion.div>
               <motion.div {...slideAnimation("down")} className={styles.image}>
