@@ -7,6 +7,7 @@ import state from "../../store";
 import { useSnapshot } from "valtio";
 import { slideAnimation, fadeAnimation } from "../../config/motion";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -20,9 +21,6 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    state.login = false;
-    state.cartPage = true;
-  
     axios
     .post("https://erin-faithful-scarab.cyclic.app/register", {
       username: userName,
@@ -30,7 +28,14 @@ const Register = () => {
       email: email,
     })
     .then((response) => {
-      console.log(response.data)
+      console.log(response.status);
+      if(response.status === 200){
+        state.login = false;
+        state.cartPage = true;
+        toast.success("User added successfully");
+      }else{
+        toast.error("Some error occured");
+      }
     });
     
   };

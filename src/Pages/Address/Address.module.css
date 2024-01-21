@@ -1,0 +1,34 @@
+.addressPage{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    gap:3rem;
+}
+.box{
+    width:max-content;
+    height:max-content;
+    position: relative;
+    top:80px;
+    max-width:40vw;
+    box-sizing: border-box;
+    padding:3vw;
+    border-radius:10px;
+    box-shadow:0 0 10px rgb(193, 184, 184);
+}
+
+.inputbox{
+    width:30vw;
+    border:1px solid rgb(154, 146, 146);
+    border-radius: 5px;
+    padding:1rem;
+}
+
+.name{
+    width:13vw;
+}
+
+.heading{
+    font-size: larger;
+    font-weight:700;
+}

@@ -94,10 +94,11 @@ const Customizer = () => {
   const handleState = ()=>{
     state.login= true;
     state.registerpage = true;
+    state.canvas = false;
   }
   return (
     <AnimatePresence>
-      {(!snap.intro && !snap.login && !snap.cartPage )&& (
+      {(!snap.intro && snap.canvas )&& (
          <>
          <motion.div 
          key="custom"

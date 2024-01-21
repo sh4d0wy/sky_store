@@ -5,15 +5,19 @@ import Auth from "./Components/Auth/Auth"
 import {Routes,Route} from 'react-router-dom'
 import Register from "./Components/Auth/Register"
 import Cart from "./Pages/Cart/Cart"
+import { Toaster } from "react-hot-toast"
+import { Address } from "./Pages/Address/Address"
 
 function App() {
   return (
     <main className="app transition=a-all ease-in">
+      <Toaster/>
       <Home/>
       <CanvasModel/>
       <Customizer/>
       <Auth/>
       <Cart/>
+      <Address/>
       <div>
         <Routes>
           <Route path="/home" element={<Home/>}/>

@@ -13,7 +13,7 @@ const CanvasModel = () => {
   console.log(snap.cartPage);
   return (
     <>
-      {(!snap.login && !snap.cartPage) && (
+      {snap.canvas && (
         <Canvas
           shadows
           camera={{ position: [0, 0, 0], fov: 25 }}

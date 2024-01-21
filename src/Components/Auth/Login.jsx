@@ -1,31 +1,39 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import state from "../../store";
 import { useSnapshot } from "valtio";
 import { motion, AnimatePresence } from "framer-motion";
-import styles from './Login.module.css'
+import styles from "./Login.module.css";
 import axios from "axios";
 import { slideAnimation } from "../../config/motion";
+import toast from "react-hot-toast";
+
 const Login = () => {
   const [loginUserName, setloginUserName] = useState("");
   const [loginPassword, setloginPassword] = useState("");
   const [isClicked, setIsClicked] = useState(false);
-  const handlePage = ()=>{
+  const handlePage = () => {
     state.registerpage = true;
-}
+  };
   const handleLogin = (e) => {
     e.preventDefault();
-    state.cartPage = true;
-    state.login = false;
+    
     axios
       .post("https://erin-faithful-scarab.cyclic.app/login", {
         username: loginUserName,
         password: loginPassword,
       })
       .then((response) => {
-        console.log(response);
+        if(response.data.message==="authenticated"){
+          state.cartPage = true;
+          state.login = false;
+          toast.success("User logged in successfully");
+        }else if(response.data.message==="not authenticated"){
+          toast.error("Invalid username or password");
+        }
+
       });
   };
-  const snap=useSnapshot(state)
+  const snap = useSnapshot(state);
   return (
     <>
       <motion.div {...slideAnimation("up")}>
@@ -43,7 +51,10 @@ const Login = () => {
             value={loginUserName}
             onChange={(e) => setloginUserName(e.target.value)}
           />
-          <motion.div className={`${styles.password} ${styles.flex}`} {...slideAnimation("up")}>
+          <motion.div
+            className={`${styles.password} ${styles.flex}`}
+            {...slideAnimation("up")}
+          >
             <input
               type={isClicked ? "text" : "password"}
               placeholder="&#xf023; Password"
@@ -52,7 +63,10 @@ const Login = () => {
               value={loginPassword}
               required
             />
-            <button className={styles.eyes} onClick={()=>setIsClicked(!isClicked)}>
+            <button
+              className={styles.eyes}
+              onClick={() => setIsClicked(!isClicked)}
+            >
               {isClicked ? (
                 <i className="fa-solid fa-eye"></i>
               ) : (
@@ -60,11 +74,11 @@ const Login = () => {
               )}
             </button>
           </motion.div>
-          
+
           <button className={styles.btn} type="submit">
             Login
           </button>
-     
+
           <hr />
           <p>OR</p>
           <hr />
