@@ -17,21 +17,24 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     
-    axios
-      .post("https://erin-faithful-scarab.cyclic.app/login", {
-        username: loginUserName,
-        password: loginPassword,
-      })
-      .then((response) => {
-        if(response.data.message==="authenticated"){
-          state.cartPage = true;
-          state.login = false;
-          toast.success("User logged in successfully");
-        }else if(response.data.message==="not authenticated"){
-          toast.error("Invalid username or password");
-        }
+    // axios
+    //   .post("https://erin-faithful-scarab.cyclic.app/login", {
+    //     username: loginUserName,
+    //     password: loginPassword,
+    //   })
+    //   .then((response) => {
+    //     if(response.data.message==="authenticated"){
+    //       state.cartPage = true;
+    //       state.login = false;
+    //       toast.success("User logged in successfully");
+    //     }else if(response.data.message==="not authenticated"){
+    //       toast.error("Invalid username or password");
+    //     }
 
-      });
+    //   });
+    state.cartPage = true;
+    state.login = false;
+    toast.success("User logged in successfully");
   };
   const snap = useSnapshot(state);
   return (
