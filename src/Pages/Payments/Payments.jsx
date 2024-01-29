@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import state from "../../store";
 import { slideAnimation } from "../../config/motion";
 import UserButton from "../../Components/UserButton/UserButton";
+import ChangePass from "../../Components/ChangePasas/ChangePass";
 
 const Payments = () => {
   const snap = useSnapshot(state);
@@ -36,6 +37,7 @@ const Payments = () => {
       {snap.paymentsPage && (
         <div className="bg-zinc-100 flex gap-[3vw] w-[100vw] h-[100vh] flex justify-center items-start  pt-[3%]">
           <UserButton/>
+          <ChangePass/>
           <div className="flex flex-col gap-[1vw]">
             <div className="flex flex-col gap-2 items-center">
               <p className="font-bold text-xl">Payment method</p>

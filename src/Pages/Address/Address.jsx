@@ -6,6 +6,7 @@ import styles from "./Address.module.css";
 import { CustomButton } from "../../Components";
 import { slideAnimation,fadeAnimation } from "../../config/motion";
 import UserButton from "../../Components/UserButton/UserButton";
+import ChangePass from "../../Components/ChangePasas/ChangePass";
 export const Address = () => {
   const snap = useSnapshot(state);
 
@@ -20,6 +21,7 @@ export const Address = () => {
         {snap.addressPage && (
           <motion.div className={styles.addressPage} >
             <UserButton/>
+            <ChangePass/>
             <motion.div className={styles.box} {...slideAnimation("up")}  >
               <h1 className={styles.heading}>Billing Details </h1>
               <hr className="h-px my-6 bg-gray-400 border-0 w-full" />

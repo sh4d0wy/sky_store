@@ -13,6 +13,10 @@ const UserButton = () => {
     state.userName = null;
     state.cartPage = false;
   }
+  const handleUpdate = ()=>{
+    state.isModal = false
+    state.updatePassword = true;
+  }
   const snap = useSnapshot(state)
   return (
     <>
@@ -27,7 +31,9 @@ const UserButton = () => {
           {snap.isModal && (
             <>
               <div className="bg-white-300 shadow-xl w-[10vw] flex bg-white text-sm items-start justify-center flex-col h-100 p-5">
-                <button className="font-bold border-b-2 border-gray-200 m-1">
+                <button className="font-bold border-b-2 border-gray-200 m-1"
+                  onClick = {handleUpdate}
+                >
                   Password
                 </button>
                 <button

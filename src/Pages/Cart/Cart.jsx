@@ -8,6 +8,7 @@ import { IoBag } from "react-icons/io5";
 import { AnimatePresence, motion } from "framer-motion";
 import { slideAnimation } from "../../config/motion";
 import  Userbutton  from "../../Components/UserButton/UserButton";
+import ChangePass from "../../Components/ChangePasas/ChangePass";
 
 const Cart = () => {
   const snap = useSnapshot(state);
@@ -44,6 +45,7 @@ const Cart = () => {
             {...slideAnimation("up")}
           >
             <Userbutton/>
+            <ChangePass/>
             <motion.div className="flex gap-2 " {...slideAnimation("up")}>
               <IoBag size={40} />
               <h1 className="font-extrabold text-3xl">My Cart</h1>
