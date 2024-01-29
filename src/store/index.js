@@ -15,7 +15,7 @@ const state = proxy({
     addressPage:false,
     paymentsPage:false,
     Quantity:1,
-    prize:39.49,
+    prize:599,
     showCart:true,
     promoCode:"",
     discount:0,
@@ -25,8 +25,13 @@ const state = proxy({
     setGooglePay:false,
     setApplePay:false,
     Card:true,
-    address1:false,
-    address2:false
+    forgotPassword:false,
+    verify:false,
+    resetPassword:false,
+    updatePassword:false,
+    email:"",
+    userName:"",
+    isModal:false
 })
 
 export default state;

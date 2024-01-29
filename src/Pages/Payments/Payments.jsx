@@ -3,6 +3,8 @@ import styles from "./Payments.module.css";
 import { useSnapshot } from "valtio";
 import { AnimatePresence, motion } from "framer-motion";
 import state from "../../store";
+import { slideAnimation } from "../../config/motion";
+import UserButton from "../../Components/UserButton/UserButton";
 
 const Payments = () => {
   const snap = useSnapshot(state);
@@ -21,15 +23,7 @@ const Payments = () => {
       state.setApplePay = true;
     }
   };
-  const AddressChange = (e) => {
-    state.address1= false;
-    state.address2 = false;
-    if (e.target.value == "A1") {
-        state.address1= true;
-    } else if (e.target.value == "A2") {
-        state.address2 = true;
-    }
-  };
+
   const Card = () => {
     state.Card = false;
   };
@@ -40,25 +34,26 @@ const Payments = () => {
   return (
     <>
       {snap.paymentsPage && (
-        <div className="bg-zinc-100 flex gap-[3vw] w-[100vw] h-[100vh]">
+        <div className="bg-zinc-100 flex gap-[3vw] w-[100vw] h-[100vh] flex justify-center items-start  pt-[3%]">
+          <UserButton/>
           <div className="flex flex-col gap-[1vw]">
-          <div className="flex flex-col gap-2 items-center mt-[1vw]">
-                <p className="font-bold">Payment method</p>
-                <hr className="w-[30vw]" />
+            <div className="flex flex-col gap-2 items-center">
+              <p className="font-bold text-xl">Payment method</p>
+              <hr className="w-[30vw]" />
             </div>
             <div
               className={
-                snap.Card ? "flex flex-col gap-[1vw] m-[1vw]" : "hidden"
+                snap.Card ? "flex flex-col gap-[1vw] m-[1vw] shadow-lg" : "hidden"
               }
             >
               <div
                 className={
                   snap.setCard
-                    ? "bg-white w-[50vw] border-0 border-2 border-solid border-green-700 rounded-md"
-                    : "bg-white w-[50vw] rounded-md"
+                    ? "bg-white w-[50vw] border-0 border-2 border-solid border-green-700 shadow-lg rounded-md"
+                    : "bg-white w-[50vw] rounded-md shadow-lg"
                 }
               >
-                <div className="flex flex-col gap-[1.5vw] m-[1.5vw]">
+                <div className="flex flex-col gap-[1.5vw] m-[1.5vw] ">
                   <div className="text-sm">
                     <input
                       type="radio"
@@ -103,7 +98,8 @@ const Payments = () => {
 
                   <div className="flex gap-[1vw]">
                     <button
-                      className="w-[10vw] h-[3vw] bg-green-700 text-white text-xs rounded-sm"
+                      className="w-[10vw] h-[3vw] text-white text-sm rounded-md"
+                      style={{background:`${snap.color}`}}
                       onClick={Card}
                     >
                       Cancel
@@ -116,8 +112,8 @@ const Payments = () => {
               <div
                 className={
                   snap.setPaypal
-                    ? "bg-white w-[50vw] h-[5vw] border-0 border-2 border-solid border-green-700 rounded-md flex gap-[10vw]"
-                    : "bg-white w-[50vw] h-[4vw] rounded-md flex gap-[10vw]"
+                    ? "bg-white w-[50vw] h-[5vw] shadow-lg border-0 border-2 border-solid border-green-700 rounded-md flex gap-[10vw]"
+                    : "bg-white w-[50vw] h-[4vw] shadow-lg rounded-md flex gap-[10vw]"
                 }
               >
                 <div className="m-[1.5vw]">
@@ -134,8 +130,8 @@ const Payments = () => {
               <div
                 className={
                   snap.setGooglePay
-                    ? "bg-white w-[50vw] h-[5vw] border-0 border-2 border-solid border-green-700 rounded-md flex gap-[10vw]"
-                    : "bg-white w-[50vw] h-[4vw] rounded-md flex gap-[10vw]"
+                    ? "bg-white w-[50vw] h-[5vw] shadow-lg border-0 border-2 border-solid border-green-700 rounded-md flex gap-[10vw]"
+                    : "bg-white w-[50vw] h-[4vw] shadow-lg rounded-md flex gap-[10vw]"
                 }
               >
                 <div className="m-[1.5vw]">
@@ -157,110 +153,43 @@ const Payments = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col m-[3vw] gap-[2vw]">
-          <div className=" bg-gray-200 w-[38vw] h-[20vw] rounded-md">
-            <div className="flex flex-col gap-[2vw] items-center m-[1vw]">
-              <div className="flex flex-col gap-[1vw] items-center">
-              <p className="font-bold">Order Summary</p>
-              <hr className="w-[30vw] border border-gray-50" />
-              </div>
-              <div className="flex flex-col text-sm text-slate-500 gap-[1vw]">
-                <div className="flex gap-[18vw]">
-                  <span>Shipping cost</span>
-                  <span>TBD</span>
-                </div>
-                <div className="flex gap-[21vw]">
-                  <span>Discount</span>
-                  <span>-${snap.discount}</span>
-                </div>
-                <div className="flex gap-[24vw]">
-                  <span>Tax</span>
-                  <span>TBD</span>
-                </div>
-                <hr className="w-[30vw] border border-gray-50" />
-                <div className="flex gap-[16vw] font-bold text-slate-900 font-l">
-                  <span>Estimated Total</span>
-                  <span>${snap.prize * snap.Quantity - snap.discount}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-[2vw] items-center">
-            <div className="flex flex-col gap-2 items-center">
-                <p className="font-bold">Shipping Address</p>
-                <hr className="w-[30vw]" />
-            </div>
-            <div
-                className={snap.address1?"bg-white w-[38vw] h-[5vw] rounded-md border-0 border-2 border-solid border-green-700":"bg-white w-[38vw] h-[5vw] rounded-md"}     
+          <motion.div className={styles.box} {...slideAnimation("up")}>
+            <h1 className={styles.heading}>Summary </h1>
+            <hr className="h-px my-6 bg-gray-400 border-0 w-full" />
+            <motion.div className="flex flex-col w-full justify-center items-center h-auto">
+              <motion.div
+                className="flex justify-between w-full gap-20"
+                {...slideAnimation("up")}
               >
-                <div className="m-[1.5vw]">
-                  <input
-                    type="radio"
-                    name="Address"
-                    onChange={AddressChange}
-                    value="A1"
-                  />{" "}
-                  ---------------
-                </div>
-                <div></div>
-            </div>
-            <div className={snap.address2?"bg-white w-[38vw] rounded-md border-0 border-2 border-solid border-green-700":"bg-white w-[38vw] rounded-md"}>
-            <div className="flex flex-col gap-[1vw] m-[1.5vw]">
-            <div className="text-sm">
-                    <input
-                      type="radio"
-                      name="Address"
-                      onChange={AddressChange}
-                      value='A2'
-                    />{" "}
-                    Add Another Address
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-400">Street Address</p>
-                    <input
-                      type="text"
-                      className="h-[2.5vw] w-[30vw] p-2 border-0 border-2 border-solid border-gray-200 outline-0 rounded-sm"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-400">State</p>
-                    <input
-                      type="text"
-                      className="h-[2.5vw] w-[30vw] p-2 border-0 border-2 border-solid border-gray-200 outline-0 rounded-sm"
-                    />
-                  </div>
-                  <div className="flex gap-[1vw]">
-                    <div>
-                      <p className="text-xs text-gray-400">
-                        City
-                      </p>
-                      <input
-                        type="text"
-                        className="h-[2.5vw] w-[20vw] p-2 border-0 border-2 border-solid border-gray-200 outline-0 rounded-sm"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-400">Zip code</p>
-                      <input
-                        type="text"
-                        className="h-[2.5vw] w-[20vw] p-2 border-0 border-2 border-solid border-gray-200 outline-0 rounded-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex gap-[1vw]">
-                    <button
-                      className="w-[10vw] h-[3vw] bg-green-700 text-white text-xs rounded-sm"
-                      onClick={Card}
-                    >
-                      Cancel
-                    </button>
-                  </div>
-            </div>
-            </div>
-
-          </div>
-          </div>
+                <span>Products</span>
+                <span>Rs {snap.prize * snap.Quantity}</span>
+              </motion.div>
+              <motion.div
+                className="flex justify-between w-full gap-20"
+                {...slideAnimation("up")}
+              >
+                <span>Discount</span>
+                <span className="text-left">Rs {snap.discount}</span>
+              </motion.div>
+              <hr className="h-px my-6 bg-gray-400 border-0 w-full" />
+              <motion.div
+                className="flex justify-between w-full gap-20 my-2"
+                {...slideAnimation("up")}
+              >
+                <span className="font-bold text-lg">Total</span>
+                <span className="font-bold text-lg">
+                  Rs {snap.prize * snap.Quantity - snap.discount}
+                </span>
+              </motion.div>
+              <button
+                onClick={Card}
+                className="w-fit px-20 py-2.5 my-4 font-bold py-1.5 flex-1 rounded-md text-white"
+                style={{ backgroundColor: `${snap.color}` }}
+              >
+                Proceed
+              </button>
+            </motion.div>
+          </motion.div>
         </div>
       )}
     </>

@@ -8,6 +8,9 @@ import Cart from "./Pages/Cart/Cart"
 import { Toaster } from "react-hot-toast"
 import { Address } from "./Pages/Address/Address"
 import Payments  from "./Pages/Payments/Payments"
+import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword"
+import OtpVerification from "./Pages/OtpVerification/OtpVerification"
+import ResetPassword from "./Pages/ResetPassword/ResetPassword"
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
       <Cart/>
       <Address/>
       <Payments/>
+      <ForgotPassword/>
+      <OtpVerification/>
+      <ResetPassword/>
       <div>
         <Routes>
           <Route path="/home" element={<Home/>}/>

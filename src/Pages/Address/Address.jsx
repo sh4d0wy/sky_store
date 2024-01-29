@@ -4,7 +4,8 @@ import state from "../../store";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "./Address.module.css";
 import { CustomButton } from "../../Components";
-
+import { slideAnimation,fadeAnimation } from "../../config/motion";
+import UserButton from "../../Components/UserButton/UserButton";
 export const Address = () => {
   const snap = useSnapshot(state);
 
@@ -13,19 +14,17 @@ export const Address = () => {
     state.paymentsPage = true;
   };
 
-  console.log(snap.addressPage);
-  console.log(snap.paymentsPage);
-
   return (
     <>
       <AnimatePresence>
         {snap.addressPage && (
-          <motion.div className={styles.addressPage}>
-            <motion.div className={styles.box}>
+          <motion.div className={styles.addressPage} >
+            <UserButton/>
+            <motion.div className={styles.box} {...slideAnimation("up")}  >
               <h1 className={styles.heading}>Billing Details </h1>
               <hr className="h-px my-6 bg-gray-400 border-0 w-full" />
               <form className="flex items-center justify-center gap-4 flex-col">
-                <motion.div className="flex justify-between w-full">
+                <motion.div className="flex justify-between w-full" {...slideAnimation("up")}>
                   <input
                     className={`${styles.inputbox}  ${styles.name}`}
                     id="FirstName"
@@ -37,35 +36,35 @@ export const Address = () => {
                     placeholder="LastName"
                   />
                 </motion.div>
-                <motion.div>
+                <motion.div {...slideAnimation("up")}>
                   <input
                     className={styles.inputbox}
                     id="Address"
                     placeholder="Address"
                   />
                 </motion.div>
-                <motion.div>
+                <motion.div {...slideAnimation("up")}>
                   <input
                     className={styles.inputbox}
                     id="Area"
                     placeholder="Area"
                   />
                 </motion.div>
-                <motion.div>
+                <motion.div {...slideAnimation("up")}>
                   <input
                     className={styles.inputbox}
                     id="City"
                     placeholder="City"
                   />
                 </motion.div>
-                <motion.div>
+                <motion.div {...slideAnimation("up")}>
                   <input
                     className={styles.inputbox}
                     id="State"
                     placeholder="State"
                   />
                 </motion.div>
-                <motion.div>
+                <motion.div {...slideAnimation("up")}>
                   <input
                     className={styles.inputbox}
                     id="phone"
@@ -74,22 +73,22 @@ export const Address = () => {
                 </motion.div>
               </form>
             </motion.div>
-            <motion.div className={styles.box}>
+            <motion.div className={styles.box} {...slideAnimation("up")}>
               <h1 className={styles.heading}>Summary </h1>
               <hr className="h-px my-6 bg-gray-400 border-0 w-full" />
               <motion.div className="flex flex-col w-full justify-center items-center h-auto">
-                <motion.div className="flex justify-between w-full gap-20">
+                <motion.div className="flex justify-between w-full gap-20" {...slideAnimation("up")}>
                   <span>Products</span>
-                  <span>Rs 599</span>
+                  <span>Rs. {snap.prize * snap.Quantity}</span>
                 </motion.div>
-                <motion.div className="flex justify-between w-full gap-20">
-                  <span>Shipping</span>
-                  <span className="text-left">Rs 49</span>
+                <motion.div className="flex justify-between w-full gap-20" {...slideAnimation("up")}>
+                  <span>Discount</span>
+                  <span className="text-left">Rs {snap.discount}</span>
                 </motion.div>
                 <hr className="h-px my-6 bg-gray-400 border-0 w-full" />
-                <motion.div className="flex justify-between w-full gap-20 my-2">
+                <motion.div className="flex justify-between w-full gap-20 my-2" {...slideAnimation("up")}>
                   <span className="font-bold text-lg">Total</span>
-                  <span className="font-bold text-lg">Rs 648</span>
+                  <span className="font-bold text-lg">Rs {snap.prize*snap.Quantity - snap.discount}</span>
                 </motion.div>
                 <button
                   onClick={handlePage}

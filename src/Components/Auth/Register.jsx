@@ -32,6 +32,7 @@ const Register = () => {
       if(response.status === 200){
         state.login = false;
         state.cartPage = true;
+        state.userName = userName;
         toast.success("User added successfully");
       }else{
         toast.error("Some error occured");

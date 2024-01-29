@@ -16,25 +16,27 @@ const Login = () => {
   };
   const handleLogin = (e) => {
     e.preventDefault();
-    
-    // axios
-    //   .post("https://erin-faithful-scarab.cyclic.app/login", {
-    //     username: loginUserName,
-    //     password: loginPassword,
-    //   })
-    //   .then((response) => {
-    //     if(response.data.message==="authenticated"){
-    //       state.cartPage = true;
-    //       state.login = false;
-    //       toast.success("User logged in successfully");
-    //     }else if(response.data.message==="not authenticated"){
-    //       toast.error("Invalid username or password");
-    //     }
 
-    //   });
-    state.cartPage = true;
+    axios
+      .post("https://erin-faithful-scarab.cyclic.app/login", {
+        username: loginUserName,
+        password: loginPassword,
+      })
+      .then((response) => {
+        state.cartPage = true;
+        state.login = false;
+        state.userName = loginUserName;
+        console.log(state.userName);
+        toast.success("User logged in successfully");
+      })
+      .catch(() => {
+        toast.error("Invalid username or password");
+      });
+  };
+
+  const forgotPassword = () => {
+    state.forgotPassword = true;
     state.login = false;
-    toast.success("User logged in successfully");
   };
   const snap = useSnapshot(state);
   return (
@@ -85,12 +87,15 @@ const Login = () => {
           <hr />
           <p>OR</p>
           <hr />
-          <button className={styles.oathbtn}>&#xf1a0; Login with Google</button>
+          {/* <button className={styles.oathbtn}>&#xf1a0; Login with Google</button> */}
           <p>
             Don't have an account?<a onClick={handlePage}>Register</a>
           </p>
         </motion.div>
       </form>
+      <button className="text-bold" onClick={forgotPassword}>
+        Forgot Password?
+      </button>
     </>
   );
 };
